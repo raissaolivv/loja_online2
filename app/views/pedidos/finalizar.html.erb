@@ -1,0 +1,12 @@
+<h1>Finalizar Compra</h1>
+<p>Total: R$ <%= @total_geral %></p>
+
+<form action="<%= pedidos_finalizar_path %>" method="post">
+  <label for="metodo_pagamento">Método de Pagamento:</label>
+  <select name="metodo_pagamento">
+    <option value="Cartão">Cartão</option>
+    <option value="Boleto">Boleto</option>
+    <option value="Pix">Pix</option>
+  </select>
+  <input type="submit" value="Finalizar Compra">
+</form>
