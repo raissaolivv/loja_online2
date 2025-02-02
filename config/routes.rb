@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "produtos#index"
+  devise_for :users
+  root "sessions#new"
 
   # Sessões (login/logout)
   get "login", to: "sessions#new"
@@ -7,15 +8,18 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   # Clientes (cadastro)
-  get "cadastro", to: "clientes#new"
-  post "cadastro", to: "clientes#create"
+  get "cadastro", to: "cadastros#new"
+  post "cadastro", to: "cadastros#create"
+
+  #Homepage
+  post "home", to: "home#index"
 
   # Produtos
   resources :produtos, only: [:index]
 
   # Carrinho
-  resource :carrinho, only: [:show] do
-    post "adicionar/:codigo", to: "carrinhos#adicionar", as: "adicionar"
+  resource :carrinhos, only: [:show] do
+    post "adicionar/:id", to: "carrinhos#adicionar", as: "adicionar"
     delete "remover/:id", to: "carrinhos#remover", as: "remover"
     patch "aumentar/:id", to: "carrinhos#aumentar_quantidade", as: "aumentar"
     patch "diminuir/:id", to: "carrinhos#diminuir_quantidade", as: "diminuir"

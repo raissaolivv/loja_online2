@@ -5,9 +5,10 @@ class Produto < ApplicationRecord
     has_many :carrinhos, through: :produto_carrinhos
     has_one :estoque
   
+  
     validates :nome, presence: true
-    validates :codigo, presence: true, uniqueness: true
     validates :preco, numericality: { greater_than: 0 }
+    validates :imagem, presence: true
   
     def to_s
       nome

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container d-flex align-items-center justify-content-center min-vh-100">
+        <div class="card shadow p-4" style="max-width: 400px; width: 100%; max-height: fit-content;">
+            <h1 class="text-center mb-2">Cadastro</h1>
+            <%= form_with model: @user, url: home_path, method: :post do |f| %>
+                
+                <!-- Nome Field -->
+                <div class="mb-3">
+                    <%= f.label :nome, class: "form-label" %>
+                    <%= f.text_field :nome, class: "form-control" %>
+                    <% if @user.errors[:nome].any? %>
+                        <div class="text-danger mt-1">
+                            <%= @user.errors[:nome].first %>
+                        </div>
+                    <% end %>
+                </div>
+
+                <!-- Endereço Field -->
+                <div class="mb-3">
+                    <%= f.label :endereco, class: "form-label" %>
+                    <%= f.text_field :endereco, class: "form-control" %>
+                    <% if @user.errors[:endereco].any? %>
+                        <div class="text-danger mt-1">
+                            <%= @user.errors[:endereco].first %>
+                        </div>
+                    <% end %>
+                </div>
+
+                <!-- E-mail Field -->
+                <div class="mb-3">
+                    <%= f.label :email, class: "form-label" %>
+                    <%= f.email_field :email, class: "form-control" %>
+                    <% if @user.errors[:email].any? %>
+                        <div class="text-danger mt-1">
+                            <%= @user.errors[:email].first %>
+                        </div>
+                    <% end %>
+                </div>
+
+                <!-- Telefone Field -->
+                <div class="mb-3">
+                    <%= f.label :telefone, class: "form-label" %>
+                    <%= f.telephone_field :telefone, class: "form-control" %>
+                    <% if @user.errors[:telefone].any? %>
+                        <div class="text-danger mt-1">
+                            <%= @user.errors[:telefone].first %>
+                        </div>
+                    <% end %>
+                </div>
+
+                <!-- Data de Nascimento Field -->
+                <div class="mb-3">
+                    <%= f.label :dataNasc, class: "form-label" %>
+                    <%= f.date_select :dataNasc, class: "form-control" %>
+                    <% if @user.errors[:dataNasc].any? %>
+                        <div class="text-danger mt-1">
+                            <%= @user.errors[:dataNasc].first %>
+                        </div>
+                    <% end %>
+                </div>
+
+                <!-- Senha Field -->
+                <div class="mb-3">
+                    <%= f.label :password, class: "form-label" %>
+                    <%= f.password_field :password, class: "form-control" %>
+                    <% if @user.errors[:password].any? %>
+                        <div class="text-danger mt-1">
+                            <%= @user.errors[:password].first %>
+                        </div>
+                    <% end %>
+                </div>
+
+                <!-- Confirmar Senha Field -->
+                <div class="mb-3">
+                    <%= f.label :password_confirmation, class: "form-label" %>
+                    <%= f.password_field :password_confirmation, class: "form-control" %>
+                    <% if @user.errors[:password_confirmation].any? %>
+                        <div class="text-danger mt-1">
+                            <%= @user.errors[:password_confirmation].first %>
+                        </div>
+                    <% end %>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <%= f.submit 'Cadastrar', class: "btn btn-primary" %>
+                </div>
+            <% end %>
+
+            <div class="mt-3 text-center">
+                <small>Já tem uma conta? <%= link_to 'Faça login', login_path %></small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
