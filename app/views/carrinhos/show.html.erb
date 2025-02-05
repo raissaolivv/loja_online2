@@ -80,15 +80,15 @@
                     <td>R$ <%= number_to_currency(item.total, unit: "", separator: ",", delimiter: ".") %></td>
                     <td>
                         <div class="d-flex justify-content-center">
-                            <%= form_with url: diminuir_path(item.produto.id), method: :patch, class: "me-2" do %>
+                            <%= form_with url: diminuir_carrinhos_path(item.produto.id), method: :patch, class: "me-2" do %>
                                 <button type="submit" class="btn btn-sm btn-outline-danger">-</button>
                             <% end %>
 
-                            <%= form_with url: aumentar_path(item.produto.id), method: :patch, class: "me-2" do %>
+                            <%= form_with url: aumentar_carrinhos_path(item.produto.id), method: :patch, class: "me-2" do %>
                                 <button type="submit" class="btn btn-sm btn-outline-success">+</button>
                             <% end %>
 
-                            <%= form_with url: remover_do_carrinho_path(item.produto.id), method: :post do %>
+                            <%= form_with url: remover_carrinhos_path(item.produto.id), method: :delete do %>
                                 <button type="submit" class="btn btn-sm btn-outline-warning">
                                     <i class="fas fa-trash-alt"></i> <!-- Ícone de lixeira -->
                                 </button>
@@ -105,8 +105,7 @@
         </div>        
 
         <div class="d-flex justify-content-between mt-3">
-            <%= link_to "Continuar Comprando", homepage_path, class: "btn btn-outline-secondary" %>
-            <%= link_to "Finalizar Compra", finalizar_compra_path, class: "btn btn-primary" %>
+            <%= link_to "Continuar Comprando", root_path, class: "btn btn-outline-secondary" %>
         </div>
     </div>
 
