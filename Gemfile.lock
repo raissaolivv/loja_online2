@@ -376,6 +376,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1)
   bootsnap
   bootstrap (~> 5.3.0)
   brakeman

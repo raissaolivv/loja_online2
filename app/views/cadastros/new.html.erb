@@ -11,90 +11,32 @@
     <div class="container d-flex align-items-center justify-content-center min-vh-100">
         <div class="card shadow p-4" style="max-width: 400px; width: 100%; max-height: fit-content;">
             <h1 class="text-center mb-2">Cadastro</h1>
-            <%= form_with model: @user, url: home_path, method: :post do |f| %>
-                
-                <!-- Nome Field -->
-                <div class="mb-3">
-                    <%= f.label :nome, class: "form-label" %>
-                    <%= f.text_field :nome, class: "form-control" %>
-                    <% if @user.errors[:nome].any? %>
-                        <div class="text-danger mt-1">
-                            <%= @user.errors[:nome].first %>
-                        </div>
-                    <% end %>
-                </div>
+                <%= form_with url: home_path, method: :post do |f| %>
+                    <div class="mb-3">
+                        <%= f.label :nome, class: "form-label" %>
+                        <%= f.text_field :nome, class: "form-control" %>
+                    </div>
 
-                <!-- Endereço Field -->
-                <div class="mb-3">
-                    <%= f.label :endereco, class: "form-label" %>
-                    <%= f.text_field :endereco, class: "form-control" %>
-                    <% if @user.errors[:endereco].any? %>
-                        <div class="text-danger mt-1">
-                            <%= @user.errors[:endereco].first %>
-                        </div>
-                    <% end %>
-                </div>
+                    <div class="mb-3">
+                        <%= f.label :email, class: "form-label" %>
+                        <%= f.email_field :email, class: "form-control" %>
+                    </div>
 
-                <!-- E-mail Field -->
-                <div class="mb-3">
-                    <%= f.label :email, class: "form-label" %>
-                    <%= f.email_field :email, class: "form-control" %>
-                    <% if @user.errors[:email].any? %>
-                        <div class="text-danger mt-1">
-                            <%= @user.errors[:email].first %>
-                        </div>
-                    <% end %>
-                </div>
+                    <div class="mb-3">
+                        <%= f.label :password, "Senha", class: "form-label" %>
+                        <%= f.password_field :password, class: "form-control" %>
+                    </div>
 
-                <!-- Telefone Field -->
-                <div class="mb-3">
-                    <%= f.label :telefone, class: "form-label" %>
-                    <%= f.telephone_field :telefone, class: "form-control" %>
-                    <% if @user.errors[:telefone].any? %>
-                        <div class="text-danger mt-1">
-                            <%= @user.errors[:telefone].first %>
-                        </div>
-                    <% end %>
-                </div>
+                    <div class="mb-3">
+                        <%= f.label :password_confirmation, "Confirme a Senha", class: "form-label" %>
+                        <%= f.password_field :password_confirmation, class: "form-control" %>
+                    </div>
 
-                <!-- Data de Nascimento Field -->
-                <div class="mb-3">
-                    <%= f.label :dataNasc, class: "form-label" %>
-                    <%= f.date_select :dataNasc, class: "form-control" %>
-                    <% if @user.errors[:dataNasc].any? %>
-                        <div class="text-danger mt-1">
-                            <%= @user.errors[:dataNasc].first %>
-                        </div>
-                    <% end %>
-                </div>
+                    <div class="d-grid">
+                        <%= f.submit "Cadastrar", class: "btn btn-primary" %>
+                    </div>
+                <% end %>
 
-                <!-- Senha Field -->
-                <div class="mb-3">
-                    <%= f.label :password, class: "form-label" %>
-                    <%= f.password_field :password, class: "form-control" %>
-                    <% if @user.errors[:password].any? %>
-                        <div class="text-danger mt-1">
-                            <%= @user.errors[:password].first %>
-                        </div>
-                    <% end %>
-                </div>
-
-                <!-- Confirmar Senha Field -->
-                <div class="mb-3">
-                    <%= f.label :password_confirmation, class: "form-label" %>
-                    <%= f.password_field :password_confirmation, class: "form-control" %>
-                    <% if @user.errors[:password_confirmation].any? %>
-                        <div class="text-danger mt-1">
-                            <%= @user.errors[:password_confirmation].first %>
-                        </div>
-                    <% end %>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="d-grid">
-                    <%= f.submit 'Cadastrar', class: "btn btn-primary" %>
-                </div>
-            <% end %>
 
             <div class="mt-3 text-center">
                 <small>Já tem uma conta? <%= link_to 'Faça login', login_path %></small>

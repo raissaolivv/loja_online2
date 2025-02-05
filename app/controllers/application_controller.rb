@@ -1,4 +1,11 @@
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  allow_browser versions: :modern
+  before_action :authenticate_user! # Devise já cuida da autenticação
+
+  # Permitir acessar current_user e verificar se está logado
+  helper_method :current_user, :logged_in?
+
+  # Métodos de autenticação não são necessários com Devise
+  def logged_in?
+    user_signed_in?
+  end
 end

@@ -51,7 +51,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <%= link_to "Sair", login_path, class: "nav-link" %>
+                        <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link" %>
                     </li>
                 </ul>
             </div>
@@ -80,15 +80,15 @@
                     <td>R$ <%= number_to_currency(item.total, unit: "", separator: ",", delimiter: ".") %></td>
                     <td>
                         <div class="d-flex justify-content-center">
-                            <%= form_with url: diminuir_quantidade_path(item.produto.codigo), method: :post, class: "me-2" do %>
+                            <%= form_with url: diminuir_path(item.produto.id), method: :patch, class: "me-2" do %>
                                 <button type="submit" class="btn btn-sm btn-outline-danger">-</button>
                             <% end %>
 
-                            <%= form_with url: aumentar_quantidade_path(item.produto.codigo), method: :post, class: "me-2" do %>
+                            <%= form_with url: aumentar_path(item.produto.id), method: :patch, class: "me-2" do %>
                                 <button type="submit" class="btn btn-sm btn-outline-success">+</button>
                             <% end %>
 
-                            <%= form_with url: remover_do_carrinho_path(item.produto.codigo), method: :post do %>
+                            <%= form_with url: remover_do_carrinho_path(item.produto.id), method: :post do %>
                                 <button type="submit" class="btn btn-sm btn-outline-warning">
                                     <i class="fas fa-trash-alt"></i> <!-- Ícone de lixeira -->
                                 </button>
