@@ -74,13 +74,12 @@
             <div class="row">  
                 <% @produtos.each do |produto| %>
                     <div class="col-md-2 mb-2">
-                        <% if produto.imagem.present? %>
-                            <%= image_tag "/storage/download.jpg", class: "card-img-top", alt: produto.nome, style: "height: 50%;" %>
-                        <% else %>
-                            <p>Nenhum produto disponível.</p>
-                            <%= image_tag "https://via.placeholder.com/300x200", class: "card-img-top", alt: "Imagem não disponível" %>
-                        <% end %>
                         <div class="card h-100">
+                            <% if produto.imagem.present? %>
+                                <%= image_tag "/images/#{produto.imagem}", class: "card-img-top", alt: produto.nome, style: "height: 50%;" %>
+                            <% else %>
+                                <%= image_tag "https://via.placeholder.com/300x200", class: "card-img-top", alt: "Imagem não disponível" %>
+                            <% end %>
                             <div class="card-body">
                                 <h5 class="card-title"><%= produto.nome %></h5>
                                 <p class="card-text"><%= produto.descricao %></p>
