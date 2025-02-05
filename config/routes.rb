@@ -3,7 +3,14 @@ Rails.application.routes.draw do
   root "home#index"
 
   # Devise cuida da autenticação (login, logout, cadastro, recuperação de senha)
-  devise_for :users
+  devise_for :users, skip: [:sessions]
+
+  devise_scope :user do
+    get "login", to: "devise/sessions#new"   # Sua tela personalizada
+    post "login", to: "devise/sessions#create"
+    delete "logout", to: "devise/sessions#destroy"
+  end
+  
 
   # Cadastro de novos usuários (Se quiser uma tela personalizada para cadastro)
   get "cadastro", to: "devise/registrations#new"
